@@ -1716,7 +1716,55 @@
         .form-note { margin:0; color:var(--muted); font-size:11px; opacity:.7; }
         @media (max-width:760px) { .project-grid,.contact-card { grid-template-columns:1fr; } .contact-card { padding:24px; border-radius:28px; } .hero-actions { margin-left:20px; } }
         @media (max-width:480px) { .project-bubble { min-height:0; padding:22px; border-radius:28px; } .project-bubble:nth-child(2n),.project-bubble:nth-child(3n) { border-radius:28px; } .hero-actions { margin-left:14px; } }
-    </style>
+    
+        /* ===== 2026 MODERN UI REFRESH ===== */
+        :root{
+            --accent:#e4002b; --accent2:#ff4d6d; --surface:rgba(18,18,22,.72);
+            --surface2:rgba(255,255,255,.045); --border:rgba(255,255,255,.10);
+            --text:#f7f7f8; --muted2:#a7a7b2;
+        }
+        html{scroll-behavior:smooth}
+        body{background:
+          radial-gradient(circle at 12% 8%,rgba(228,0,43,.12),transparent 25%),
+          radial-gradient(circle at 88% 24%,rgba(255,255,255,.055),transparent 24%),
+          #070709; overflow-x:hidden}
+        body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.018) 50%,transparent 100%);background-size:300% 100%;animation:ambientShift 12s ease-in-out infinite}
+        @keyframes ambientShift{0%,100%{background-position:0 0}50%{background-position:100% 0}}
+        header{min-height:82vh;display:flex;align-items:center;position:relative;isolation:isolate;border-bottom:1px solid var(--border);overflow:hidden}
+        header:after{content:"";position:absolute;width:520px;height:520px;border:1px solid rgba(228,0,43,.18);border-radius:50%;right:-180px;top:-160px;box-shadow:0 0 100px rgba(228,0,43,.08);pointer-events:none}
+        .header-inner{position:relative;z-index:2;padding-top:90px;padding-bottom:80px}
+        .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.035);backdrop-filter:blur(14px);box-shadow:0 10px 40px rgba(0,0,0,.18)}
+        h1{font-size:clamp(58px,9vw,126px)!important;line-height:.86!important;letter-spacing:-.075em!important;margin:22px 0 18px!important;text-wrap:balance}
+        h1 .line{display:inline-block;text-shadow:0 0 45px rgba(255,255,255,.06)}
+        .role{font-size:clamp(14px,1.5vw,18px)!important;color:#d0d0d8!important;letter-spacing:.03em!important}
+        .hero-actions{display:flex!important;align-items:center;gap:12px;margin:28px 0 0!important;flex-wrap:wrap}
+        .cv-download,.hero-anchor,.cv-download-large,.send-btn{border-radius:14px!important;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease!important}
+        .cv-download{background:linear-gradient(135deg,#e4002b,#a90022)!important;border:1px solid rgba(255,255,255,.14)!important;box-shadow:0 12px 35px rgba(228,0,43,.22)}
+        .cv-download:hover{transform:translateY(-4px)!important;box-shadow:0 18px 45px rgba(228,0,43,.30)!important}
+        .hero-anchor{border:1px solid var(--border)!important;background:rgba(255,255,255,.04)!important;backdrop-filter:blur(12px);padding:12px 17px!important}
+        .hero-anchor:hover{transform:translateY(-4px);border-color:rgba(228,0,43,.5)!important}
+        .about{max-width:760px!important;color:#aeb0ba!important;font-size:15px!important;line-height:1.95!important}
+        section{position:relative}
+        .constellation-section,.projects-section,.certificates-section,.resume-section{padding-top:100px!important;padding-bottom:100px!important}
+        .constellation-wrap{border:1px solid var(--border)!important;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018))!important;border-radius:34px!important;box-shadow:0 30px 100px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.05);backdrop-filter:blur(18px);overflow:hidden}
+        .project-grid{gap:20px!important;align-items:stretch}
+        .project-bubble{position:relative!important;min-height:330px!important;border:1px solid var(--border)!important;background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.018))!important;border-radius:30px!important;padding:28px!important;box-shadow:0 20px 70px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.05);backdrop-filter:blur(18px);overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .35s}
+        .project-bubble:before{content:"";position:absolute;width:190px;height:190px;right:-100px;top:-100px;border-radius:50%;background:radial-gradient(circle,rgba(228,0,43,.20),transparent 68%);transition:transform .4s ease}
+        .project-bubble:hover{transform:translateY(-9px)!important;border-color:rgba(228,0,43,.42)!important;box-shadow:0 30px 90px rgba(0,0,0,.38),0 0 0 1px rgba(228,0,43,.08)}
+        .project-bubble:hover:before{transform:scale(1.35)}
+        .project-icon{width:54px!important;height:54px!important;border-radius:17px!important;display:grid;place-items:center;background:rgba(228,0,43,.10);border:1px solid rgba(228,0,43,.20);font-size:24px!important}
+        .project-tech{display:flex!important;flex-wrap:wrap;gap:7px!important;margin-top:16px!important}.project-tech span{border:1px solid var(--border)!important;background:rgba(255,255,255,.035)!important;border-radius:999px!important;padding:5px 9px!important;color:#c9c9d0!important;font-size:10px!important}
+        .cert-grid{gap:18px!important}.cert-card{border:1px solid var(--border)!important;border-radius:26px!important;background:rgba(255,255,255,.035)!important;backdrop-filter:blur(14px);box-shadow:0 18px 60px rgba(0,0,0,.22);transition:transform .3s,border-color .3s}.cert-card:hover{transform:translateY(-7px);border-color:rgba(228,0,43,.38)!important}
+        .cert-card img{border-radius:18px!important}
+        .resume-card{border:1px solid var(--border)!important;border-radius:34px!important;background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.018))!important;box-shadow:0 30px 100px rgba(0,0,0,.28);backdrop-filter:blur(18px)!important}
+        .cv-download-large{background:linear-gradient(135deg,#e4002b,#a90022)!important;box-shadow:0 15px 40px rgba(228,0,43,.24)!important}
+        .contact-card{border:1px solid var(--border)!important;border-radius:34px!important;background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.018))!important;box-shadow:0 30px 100px rgba(0,0,0,.3)!important;backdrop-filter:blur(20px)!important;overflow:hidden}
+        .social-btn{border:1px solid var(--border)!important;border-radius:14px!important;background:rgba(255,255,255,.04)!important;min-height:44px}.social-btn.github:hover{background:#050505!important}.social-btn.linkedin:hover{background:#0a66c2!important}.social-btn.email:hover{background:#c43c3c!important}
+        .contact-form input,.contact-form textarea{border:1px solid var(--border)!important;border-radius:14px!important;background:rgba(0,0,0,.25)!important}.contact-form input:focus,.contact-form textarea:focus{border-color:rgba(228,0,43,.65)!important;box-shadow:0 0 0 4px rgba(228,0,43,.09)!important}
+        footer{border-top:1px solid var(--border)!important;background:rgba(255,255,255,.018)!important}
+        @media(max-width:760px){header{min-height:76vh}.header-inner{padding-top:70px}.constellation-section,.projects-section,.certificates-section,.resume-section{padding-top:70px!important;padding-bottom:70px!important}.project-grid{grid-template-columns:1fr!important}}
+        @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}}
+</style>
 </head>
 <body>
 
@@ -1738,21 +1786,6 @@
     <!-- ===== SCANNER ===== -->
     <div class="scanner"></div>
 
-    <!-- ===== TOP BAR ===== -->
-    <div class="top-bar">
-        <div class="wrap">
-            <div class="contact-links">
-                <span class="label">✉</span>
-                <a href="mailto:bdalrhmnsmt156@gmail.com">bdalrhmnsmt156@gmail.com</a>
-                <span class="label">in</span>
-                <a href="https://www.linkedin.com/in/abd-elrahman-osmat-b147ab317" target="_blank" rel="noopener">linkedin.com/in/abd-elrahman-osmat-b147ab317</a>
-                <span class="label">⌨</span>
-                <a href="https://github.com/bdalrhmnsmt156-eng" target="_blank" rel="noopener">github.com/bdalrhmnsmt156-eng</a>
-            </div>
-            <span style="color:var(--muted);font-size:11px;letter-spacing:.04em;opacity:.6;">◆ 17 top credentials</span>
-        </div>
-    </div>
-
     <!-- ===== HEADER ===== -->
     <header>
         <canvas id="matrix" aria-hidden="true"></canvas>
@@ -1761,7 +1794,7 @@
             <h1><span class="line">ABD ELRAHMAN</span><br><span class="line">ESMAT</span></h1>
             <p class="role">// Networking · Cybersecurity · Python · Java · Data Analysis</p>
             <div class="hero-actions">
-                <a class="cv-download" href="Abd-Elrahman-Osmat-Resume.docx" download>⬇ <span>Download CV</span></a>
+                <a class="cv-download" href="Abd-Elrahman-Osmat-Resume(1).docx" download>⬇ <span>Download CV</span></a>
                 <a class="hero-anchor" href="#projects">Explore Projects ↓</a>
             </div>
             <div class="underline"><span class="fill"></span><span class="packet"></span></div>
@@ -1943,7 +1976,7 @@
             <h2 class="section-title">Resume / CV</h2>
             <p class="section-sub">Professional Summary</p>
             <div class="resume-action-row">
-                <a class="cv-download cv-download-large" href="Abd-Elrahman-Osmat-Resume.docx" download>⬇ <span>Download CV</span></a>
+                <a class="cv-download cv-download-large" href="Abd-Elrahman-Osmat-Resume(1).docx" download>⬇ <span>Download CV</span></a>
             </div>
 
             <div class="cv-grid">
