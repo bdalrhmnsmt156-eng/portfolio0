@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abd Elrahman Esmat — Cybersecurity & Network Engineer</title>
+    <title>Abd Elrahman Osmat — Junior QA / Software Tester Portfolio</title>
 
     <!-- ===== META TAGS FOR SOCIAL SHARING ===== -->
-    <meta property="og:title" content="Abd Elrahman Esmat — Cybersecurity & Network Engineer">
-    <meta property="og:description" content="A hand-picked selection of 17 top certifications in Cybersecurity, Networking, Python, Java, Data & AI, and English. Cisco, Huawei, ITI, Edraak & more.">
+    <meta property="og:title" content="Abd Elrahman Osmat — Junior QA / Software Tester Portfolio">
+    <meta property="og:description" content="Junior QA / Manual Software Tester portfolio featuring DEPI training, software testing, Java, Python, SQL, web development projects, and professional certifications.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bdalrhmnsmt156-eng.github.io/portfolio2/">
     <meta name="twitter:card" content="summary_large_image">
@@ -1242,6 +1242,37 @@
             transform: translateY(0);
         }
 
+
+        /* ===== WEB PROJECTS / LIVE DEMOS ===== */
+        .project-item.web-live { cursor: pointer; }
+        .project-item.web-live::after {
+            content: 'LIVE DEMO ↗'; position:absolute; top:20px; right:20px;
+            font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.1em;
+            color:#00E676; border:1px solid rgba(0,230,118,.28); padding:5px 8px;
+            border-radius:999px; background:rgba(0,230,118,.05);
+        }
+        .project-item.web-live:hover { border-color:#00E676; box-shadow:0 18px 55px rgba(0,230,118,.12); }
+        .featured-certificate {
+            display:grid; grid-template-columns:minmax(260px,390px) 1fr; gap:28px; align-items:center;
+            margin:10px 0 34px; padding:18px; border:1px solid rgba(255,255,255,.10);
+            border-radius:30px; background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.018));
+            box-shadow:0 22px 70px rgba(0,0,0,.24); overflow:hidden;
+        }
+        .featured-certificate-media { position:relative; }
+        .featured-certificate-media img { display:block; width:100%; height:auto; border-radius:20px; border:1px solid rgba(255,255,255,.10); background:#fff; }
+        .certificate-ribbon { position:absolute; left:14px; top:14px; font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.10em; color:#fff; background:var(--red); padding:7px 10px; border-radius:999px; box-shadow:0 8px 25px rgba(228,0,43,.25); }
+        .featured-certificate-body { padding:8px 8px 8px 0; }
+        .certificate-kicker { font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.14em; color:var(--red); margin-bottom:10px; }
+        .featured-certificate-body h3 { font-family:'Archivo Black',sans-serif; font-size:30px; margin:0 0 10px; text-transform:uppercase; }
+        .featured-certificate-body p { color:var(--muted); line-height:1.75; margin:0 0 18px; }
+        .certificate-meta-row { display:flex; flex-wrap:wrap; gap:9px; margin-bottom:20px; }
+        .certificate-meta-row span { font-family:'IBM Plex Mono',monospace; font-size:10px; color:#cfcfd6; border:1px solid var(--line); padding:7px 10px; border-radius:999px; }
+        .certificate-actions { display:flex; flex-wrap:wrap; gap:10px; }
+        .certificate-actions a { display:inline-flex; align-items:center; justify-content:center; padding:10px 14px; border:1px solid var(--line); border-radius:12px; color:var(--text); text-decoration:none; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.04em; transition:.25s ease; }
+        .certificate-actions a:first-child { border-color:var(--red); color:#fff; background:rgba(228,0,43,.10); }
+        .certificate-actions a:hover { transform:translateY(-2px); border-color:var(--red); }
+        @media (max-width:760px) { .featured-certificate{grid-template-columns:1fr;} .featured-certificate-body{padding:4px 4px 8px;} .project-item.web-live::after{position:static;display:inline-block;margin-top:12px;} }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 700px) {
             .skills-grid {
@@ -1670,6 +1701,17 @@
         .hero-anchor:hover { transform:translateY(-3px); border-color:var(--red); }
         .resume-action-row { margin:0 0 18px; }
         .cv-download-large { font-size:14px; padding:13px 22px; }
+        #training { padding-top:58px; }
+        .training-card { margin:18px auto 0; max-width:1050px; padding:26px; border:1px solid rgba(255,255,255,.10); border-radius:24px; background:rgba(255,255,255,.035); box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 22px 70px rgba(0,0,0,.20); backdrop-filter:blur(18px); }
+        .training-head { display:flex; align-items:flex-start; justify-content:space-between; gap:20px; }
+        .training-head h3 { margin:7px 0 4px; font-size:22px; }
+        .training-role { margin:0; color:var(--muted); font-weight:700; }
+        .training-status { display:inline-flex; padding:5px 10px; border-radius:999px; border:1px solid rgba(228,0,43,.35); color:#ff5a78; background:rgba(228,0,43,.08); font-size:11px; font-weight:900; letter-spacing:.08em; }
+        .training-icon { font-size:34px; filter:drop-shadow(0 10px 25px rgba(228,0,43,.20)); }
+        .training-description { color:var(--muted); line-height:1.75; margin:18px 0 16px; }
+        .training-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+        .training-list { margin:0; padding-left:20px; color:var(--muted); line-height:1.75; }
+        .training-list li { margin-bottom:6px; }
         #projects { padding-top:58px; }
         .project-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
         .project-bubble { position:relative; isolation:isolate; overflow:hidden; min-height:310px; border:1px solid rgba(255,255,255,.09); border-radius:34px 52px 38px 58px; padding:28px; background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025)); backdrop-filter:blur(18px); box-shadow:0 18px 55px rgba(0,0,0,.25); transform:translateY(0); }
@@ -1809,18 +1851,18 @@
         <div class="wrap header-inner">
             <p class="eyebrow"><span class="sq"></span><span class="eyebrow-text">root@secure-network:~$ whoami</span></p>
             <h1><span class="line">ABD ELRAHMAN</span><br><span class="line">ESMAT</span></h1>
-            <p class="role">// Networking · Cybersecurity · Python · Java · Data Analysis</p>
+            <p class="role">// Junior QA · Software Testing · Web Development · Java · Python</p>
             <div class="hero-actions">
-                <a class="cv-download" href="Abd-Elrahman-Osmat-Resume.docx" download="Abd-Elrahman-Osmat-Resume.docx" type="application/vnd.openxmlformats-officedocument.wordprocessingml.document">⬇ <span>Download CV</span></a>
+                <a class="cv-download" href="Abd-Elrahman-Osmat-ATS-CV-Updated-DEPI-v3.docx" download="Abd-Elrahman-Osmat-ATS-CV-Updated-DEPI-v3.docx" type="application/vnd.openxmlformats-officedocument.wordprocessingml.document">⬇ <span>Download CV</span></a>
                 <a class="hero-anchor" href="#projects">Explore Projects ↓</a>
             </div>
             <div class="underline"><span class="fill"></span><span class="packet"></span></div>
             <p class="about">
                 A steadily built foundation in computing, networking, cybersecurity, and programming —
-                backed by a curated set of <strong>17 top-tier certified courses</strong> from Cisco Networking Academy, Huawei ICT Academy,
+                backed by a curated set of <strong>18 professional credentials</strong> from Cisco Networking Academy, Huawei ICT Academy,
                 ITI Mahara-Tech, Edraak, HP LIFE, Sololearn, and more. I am currently a <strong>second-year student</strong> at the
                 <strong>Faculty of Computers and Information, Egyptian E-Learning University (EELU)</strong>,
-                with a strong passion for deepening my expertise in <strong>cybersecurity</strong>.
+                with a strong focus on <strong>software testing and quality assurance</strong>, supported by foundations in cybersecurity, networking, and programming.
                 Below is a clear summary of these skills and the credentials behind them.
             </p>
         </div>
@@ -1831,7 +1873,7 @@
         <p class="constellation-eyebrow">// network.map()</p>
         <h2 class="constellation-title">Skill Network</h2>
         <div class="constellation-wrap reveal">
-            <svg class="constellation-svg" viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing 17 certifications distributed across six skill domains: Cybersecurity 5, Networking 2, Programming 4, Data and AI 3, Systems 2, Languages 1">
+            <svg class="constellation-svg" viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing 17 core certifications distributed across six skill domains: Cybersecurity 5, Networking 2, Programming 4, Data and AI 3, Systems 2, Languages 1">
                 <!-- connecting lines -->
                 <line class="conn-line" x1="400" y1="260" x2="400" y2="70"></line>
                 <line class="conn-line" x1="400" y1="260" x2="564.5" y2="165"></line>
@@ -1845,7 +1887,7 @@
                 <circle class="node-central-ring2" cx="400" cy="260" r="78"></circle>
                 <circle class="node-central-circle" cx="400" cy="260" r="52"></circle>
                 <text class="node-central-num" x="400" y="268">17</text>
-                <text class="node-central-label" x="400" y="288">certified</text>
+                <text class="node-central-label" x="400" y="288">core certs</text>
 
                 <!-- domain: Cybersecurity -->
                 <g class="domain-node">
@@ -1971,17 +2013,76 @@
         <!-- ===== PROJECTS SECTION ===== -->
         <section id="projects">
             <h2 class="section-title">Projects</h2>
-            <p class="section-sub">Java &amp; Python Applications — <span style="color:var(--muted);font-weight:400;">click any project to view details</span></p>
+            <p class="section-sub">Java, Python &amp; Web Projects — <span style="color:var(--muted);font-weight:400;">click a web project to open its live site in a new tab</span></p>
 
             <div class="project-grid" id="project-grid">
                 <!-- populated by JS -->
             </div>
         </section>
 
+        <!-- TRAINING EXPERIENCE -->
+        <section id="training">
+            <h2 class="section-title">Training Experience</h2>
+            <p class="section-sub">Current Professional Development — <span style="color:var(--muted);font-weight:400;">Software Testing &amp; Quality Assurance</span></p>
+            <div class="training-card reveal">
+                <div class="training-head">
+                    <div>
+                        <span class="training-status">IN PROGRESS</span>
+                        <h3>Digital Egypt Pioneers Initiative (DEPI)</h3>
+                        <p class="training-role">Software Tester Engineer Trainee · July 2026 – December 2026</p>
+                    </div>
+                    <div class="training-icon">🧪</div>
+                </div>
+                <p class="training-description">
+                    Current intensive training focused on Software Testing and Quality Assurance, building practical skills for a Junior QA / Manual Software Tester role.
+                </p>
+                <div class="training-chips">
+                    <span class="chip">Software Testing</span>
+                    <span class="chip">STLC</span>
+                    <span class="chip">ISTQB Fundamentals</span>
+                    <span class="chip">Test Case Design</span>
+                    <span class="chip">Test Analysis &amp; Design</span>
+                    <span class="chip">Defect Reporting</span>
+                    <span class="chip">Jira</span>
+                    <span class="chip">Postman</span>
+                    <span class="chip">Selenium</span>
+                    <span class="chip">SQL</span>
+                    <span class="chip">Java</span>
+                    <span class="chip">Agile</span>
+                </div>
+                <ul class="training-list">
+                    <li>Testing fundamentals and Software Testing Throughout the Software Development Life Cycle (STLC).</li>
+                    <li>Requirement analysis, test analysis, test case preparation, execution, and defect tracking.</li>
+                    <li>Practical exposure to Jira, Postman, Selenium, SQL/database concepts, and Java fundamentals.</li>
+                    <li>Hands-on exercises and a capstone project as part of the training program.</li>
+                </ul>
+            </div>
+        </section>
+
         <!-- CERTIFICATES -->
         <section id="certificates">
-            <h2 class="section-title">Certificates</h2>
-            <p class="section-sub">Issued Credentials — <span style="color:var(--muted);font-weight:400;">click any title to view</span></p>
+            <h2 class="section-title">Certificates &amp; Credentials</h2>
+            <p class="section-sub">Issued Credentials — <span style="color:var(--muted);font-weight:400;">latest certificate highlighted below</span></p>
+
+            <article class="featured-certificate reveal">
+                <div class="featured-certificate-media">
+                    <img src="HTML_Essentials_certificate.png" alt="HTML Essentials certificate issued by Cisco Networking Academy on 06 Sep 2026">
+                    <span class="certificate-ribbon">LATEST CREDENTIAL</span>
+                </div>
+                <div class="featured-certificate-body">
+                    <div class="certificate-kicker">◈ WEB DEVELOPMENT</div>
+                    <h3>HTML Essentials</h3>
+                    <p>Certificate awarded through the Cisco Networking Academy program via Networking Academy on <strong>06 Sep 2026</strong>.</p>
+                    <div class="certificate-meta-row">
+                        <span>Cisco Networking Academy</span>
+                        <span>Cert ID: e0416648-d8e3-4301-8697-ebf5513c942e</span>
+                    </div>
+                    <div class="certificate-actions">
+                        <a href="HTML_Essentials_certificate.pdf" target="_blank" rel="noopener">View Certificate ↗</a>
+                        <a href="HTML_Essentials_certificate.pdf" download>Download PDF ↓</a>
+                    </div>
+                </div>
+            </article>
 
             <div id="cert-container">
                 <!-- populated by JS -->
@@ -1993,7 +2094,7 @@
             <h2 class="section-title">Resume / CV</h2>
             <p class="section-sub">Professional Summary</p>
             <div class="resume-action-row">
-                <a class="cv-download cv-download-large" href="Abd-Elrahman-Osmat-Resume.docx" download="Abd-Elrahman-Osmat-Resume.docx" type="application/vnd.openxmlformats-officedocument.wordprocessingml.document">⬇ <span>Download CV</span></a>
+                <a class="cv-download cv-download-large" href="Abd-Elrahman-Osmat-ATS-CV-Updated-DEPI-v3.docx" download="Abd-Elrahman-Osmat-ATS-CV-Updated-DEPI-v3.docx" type="application/vnd.openxmlformats-officedocument.wordprocessingml.document">⬇ <span>Download CV</span></a>
             </div>
 
             <div class="cv-grid">
@@ -2005,7 +2106,7 @@
                         Passionate about studying <strong>cybersecurity</strong>, with hands-on, certified training across
                         networking, cybersecurity, Python, Java, and data analysis. Currently training in the
                         <strong>Software Tester track</strong> of the <strong>Digital Egypt Pioneers Initiative</strong>
-                        (Aug – Dec 2026). Built a broad technical foundation
+                        (Jul – Dec 2026). Built a broad technical foundation
                         through a curated set of <strong>17 top-tier courses</strong> from Cisco Networking Academy, Huawei ICT Academy,
                         ITI Mahara-Tech, Edraak, HP LIFE, Sololearn, and more. Comfortable working across Linux systems,
                         network device configuration, and multiple programming languages, with a strong interest in growing into a
@@ -2013,7 +2114,7 @@
                     </p>
                     <ul>
                         <li><strong>Education:</strong> Faculty of Computers and Information, EELU — 2nd Year</li>
-                        <li><strong>Training:</strong> Software Tester Track, Digital Egypt Pioneers Initiative — Aug–Dec 2026 (In Progress)</li>
+                        <li><strong>Training:</strong> Software Tester Track, Digital Egypt Pioneers Initiative — Jul–Dec 2026 (In Progress)</li>
                         <li><strong>Email:</strong> bdalrhmnsmt156@gmail.com</li>
                         <li><strong>LinkedIn:</strong> /in/abd-elrahman-osmat-b147ab317</li>
                         <li><strong>GitHub:</strong> bdalrhmnsmt156-eng</li>
@@ -2025,7 +2126,7 @@
                     <h4>Key Highlights</h4>
                     <ul>
                         <li><strong>Current:</strong> 2nd year student at EELU, Faculty of Computers and Information</li>
-                        <li><strong>In Progress:</strong> Software Tester Track — Digital Egypt Pioneers Initiative (Aug–Dec 2026)</li>
+                        <li><strong>In Progress:</strong> Software Tester Track — Digital Egypt Pioneers Initiative (Jul–Dec 2026)</li>
                         <li><strong>Passion:</strong> Cybersecurity research and network defense</li>
                         <li><strong>17</strong> hand-picked certifications across 6 domains</li>
                         <li><strong>Cisco</strong> — Junior Cybersecurity Analyst, Networking, Python</li>
@@ -2069,7 +2170,7 @@
 
         <!-- FOOTER -->
         <footer>
-            <p>◆ 17 top credentials · updated 2026 · built with <span style="color:var(--red);">♥</span></p>
+            <p>◆ 18 credentials · 11 projects · updated Sep 2026 · built with <span style="color:var(--red);">♥</span></p>
         </footer>
     </div>
 
@@ -2499,6 +2600,36 @@
                     initiative: '◈ GitHub Repository — Java · SQL · Python'
                 },
                 {
+                    id: 'top-3-cities', title: 'أفضل 3 مدن في العالم', titleEn: 'My Top 3 Cities in the World', icon: '🌍',
+                    language: 'HTML · CSS', badge: 'HTML5 · CSS3 · Responsive UI',
+                    github: 'https://github.com/bdalrhmnsmt156-eng/My-Top-3-Cities-in-the-Worl',
+                    live: 'https://bdalrhmnsmt156-eng.github.io/My-Top-3-Cities-in-the-Worl/',
+                    tech: ['HTML5', 'CSS3', 'Responsive UI', 'Semantic HTML', 'Forms'],
+                    description: 'A polished travel-blog style website showcasing Tokyo, Paris, and New York with responsive navigation, imagery, comparison data, embedded multimedia, and a contact form.',
+                    features: ['Responsive navigation and page structure', 'City-focused content sections for Tokyo, Paris, and New York', 'Comparison table and multimedia integration', 'Contact form and semantic HTML structure'],
+                    initiative: '◈ Live Demo · GitHub Repository'
+                },
+                {
+                    id: 'world-discovery', title: 'اكتشف العالم', titleEn: 'World Discovery', icon: '🗺️',
+                    language: 'HTML · CSS · JavaScript', badge: 'JavaScript · Geolocation API',
+                    github: 'https://github.com/bdalrhmnsmt156-eng/World-Discovery',
+                    live: 'https://bdalrhmnsmt156-eng.github.io/World-Discovery/',
+                    tech: ['HTML5', 'CSS3', 'JavaScript', 'Geolocation API', 'Image Map'],
+                    description: 'An interactive geography experience combining an image map, continent information, and browser geolocation to identify the user’s continent.',
+                    features: ['Interactive continent image-map areas', 'JavaScript-driven continent information', 'Browser Geolocation API integration', 'Responsive visual presentation'],
+                    initiative: '◈ Live Demo · GitHub Repository'
+                },
+                {
+                    id: 'harbor-light', title: 'مركز Harbor Light المجتمعي', titleEn: 'Harbor Light Community Center', icon: '🏛️',
+                    language: 'HTML · CSS', badge: 'Semantic HTML · Accessibility',
+                    github: 'https://github.com/bdalrhmnsmt156-eng/Harbor-Light-Community-Cente',
+                    live: 'https://bdalrhmnsmt156-eng.github.io/Harbor-Light-Community-Cente/',
+                    tech: ['HTML5', 'CSS3', 'Accessibility', 'Semantic HTML', 'Schema.org'],
+                    description: 'A structured community-center website focused on clear navigation, accessible content, service highlights, events, imagery, and contact information.',
+                    features: ['Semantic site navigation and page sections', 'Community services and event presentation', 'Contact information and imagery', 'Schema.org Event structured metadata'],
+                    initiative: '◈ Live Demo · GitHub Repository'
+                },
+                {
                     id: 'polymorphism', title: 'نظام تجارة إلكترونية', titleEn: 'E-Commerce System (Polymorphism)', icon: '🛒',
                     language: 'Python', badge: 'Python · OOP',
                     github: 'https://github.com/bdalrhmnsmt156-eng/Polymorphism',
@@ -2513,7 +2644,7 @@
             var projectHtml = '';
             projects.forEach(function(proj, index) {
                 projectHtml += `
-                    <article class="project-item project-bubble reveal" data-project="${proj.id}" tabindex="0" role="button" aria-label="Open ${proj.titleEn} details">
+                    <article class="project-item project-bubble reveal ${proj.live ? 'web-live' : ''}" data-project="${proj.id}" tabindex="0" role="button" aria-label="${proj.live ? 'Open live demo of ' + proj.titleEn : 'Open ' + proj.titleEn + ' details'}">
                         <div class="project-glow"></div>
                         <div class="project-topline">
                             <span class="project-icon" aria-hidden="true">${proj.icon}</span>
@@ -2605,6 +2736,11 @@
             document.querySelectorAll('.project-item').forEach(function(el) {
                 el.addEventListener('click', function() {
                     var id = this.dataset.project;
+                    var proj = projects.find(function(p) { return p.id === id; });
+                    if (proj && proj.live) {
+                        window.open(proj.live, '_blank', 'noopener,noreferrer');
+                        return;
+                    }
                     openProject(id);
                 });
             });
@@ -2747,12 +2883,12 @@
                 link.addEventListener('click', function(){
                     var href = this.getAttribute('href');
                     if (!href) return;
-                    this.setAttribute('download','Abd-Elrahman-Osmat-Resume.docx');
+                    this.setAttribute('download','Abd-Elrahman-Osmat-ATS-CV-Updated-DEPI-v3.docx');
                     this.setAttribute('target','_self');
                 });
             });
 
-            console.log('◆ Portfolio ready — 17 top credentials, 8 projects loaded');
+            console.log('◆ Portfolio ready — 18 credentials, 11 projects loaded, DEPI training active');
         })();
     </script>
 
