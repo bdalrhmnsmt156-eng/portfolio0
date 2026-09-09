@@ -1732,6 +1732,11 @@
         .cv-download,.cv-download-large{position:relative;z-index:2}
         @media (pointer:coarse){#cursor-glow{display:none}}
         @media (prefers-reduced-motion:reduce){#cursor-glow{display:none!important}}
+
+/* V14 project-link fix */
+.project-actions{position:relative;z-index:20;display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:16px}
+.project-actions .project-btn{position:relative;z-index:21;pointer-events:auto;cursor:pointer}
+.project-card .project-btn{user-select:none;-webkit-tap-highlight-color:transparent}
 </style>
 
 <style>
@@ -2201,7 +2206,7 @@
     <article class="project-card featured-project">
       <div class="project-card-top">
         <span class="project-number">01</span>
-        <span class="project-status">Live Demo</span>
+        <span class="project-status">GitHub</span>
       </div>
       <div class="project-icon">🌍</div>
       <h3>Student Performance & Analytics System</h3>
@@ -2210,7 +2215,7 @@
         <span>Java</span><span>JDBC</span><span>SQLite</span><span>SQL</span><span>Python</span><span>pandas</span>
       </div>
       <div class="project-actions">
-        <a href="https://github.com/bdalrhmnsmt156-eng/StudentPerformanceSystem" target="_blank" rel="noopener noreferrer" class="project-btn primary">GitHub ↗</a>
+        <a href="https://github.com/bdalrhmnsmt156-eng/StudentPerformanceSystem" class="project-btn primary">GitHub ↗</a>
       </div>
     </article>
 
@@ -2226,8 +2231,8 @@
         <span>HTML5</span><span>CSS3</span><span>Responsive UI</span><span>Semantic HTML</span>
       </div>
       <div class="project-actions">
-        <a href="https://bdalrhmnsmt156-eng.github.io/My-Top-3-Cities-in-the-Worl/" target="_blank" rel="noopener noreferrer" class="project-btn primary">Open Website ↗</a>
-        <a href="https://github.com/bdalrhmnsmt156-eng/My-Top-3-Cities-in-the-Worl" target="_blank" rel="noopener noreferrer" class="project-btn secondary">GitHub</a>
+        <a href="https://bdalrhmnsmt156-eng.github.io/My-Top-3-Cities-in-the-Worl/" class="project-btn primary">Open Website ↗</a>
+        <a href="https://github.com/bdalrhmnsmt156-eng/My-Top-3-Cities-in-the-Worl" class="project-btn secondary">GitHub</a>
       </div>
     </article>
 
@@ -2243,8 +2248,8 @@
         <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Geolocation API</span>
       </div>
       <div class="project-actions">
-        <a href="https://bdalrhmnsmt156-eng.github.io/World-Discovery/" target="_blank" rel="noopener noreferrer" class="project-btn primary">Open Website ↗</a>
-        <a href="https://github.com/bdalrhmnsmt156-eng/World-Discovery" target="_blank" rel="noopener noreferrer" class="project-btn secondary">GitHub</a>
+        <a href="https://bdalrhmnsmt156-eng.github.io/World-Discovery/" class="project-btn primary">Open Website ↗</a>
+        <a href="https://github.com/bdalrhmnsmt156-eng/World-Discovery" class="project-btn secondary">GitHub</a>
       </div>
     </article>
 
@@ -2260,8 +2265,8 @@
         <span>HTML5</span><span>CSS3</span><span>Accessibility</span><span>Semantic HTML</span><span>Schema.org</span>
       </div>
       <div class="project-actions">
-        <a href="https://bdalrhmnsmt156-eng.github.io/Harbor-Light-Community-Cente/" target="_blank" rel="noopener noreferrer" class="project-btn primary">Open Website ↗</a>
-        <a href="https://github.com/bdalrhmnsmt156-eng/Harbor-Light-Community-Cente" target="_blank" rel="noopener noreferrer" class="project-btn secondary">GitHub</a>
+        <a href="https://bdalrhmnsmt156-eng.github.io/Harbor-Light-Community-Cente/" class="project-btn primary">Open Website ↗</a>
+        <a href="https://github.com/bdalrhmnsmt156-eng/Harbor-Light-Community-Cente" class="project-btn secondary">GitHub</a>
       </div>
     </article>
 
@@ -2271,6 +2276,7 @@
       <h3>Hotel Management System</h3>
       <p>Object-oriented Java application for room availability, date-based searches, and reservations.</p>
       <div class="project-tags"><span>Java</span><span>OOP</span><span>Collections</span></div>
+      <div class="project-actions"><a href="https://github.com/bdalrhmnsmt156-eng/HotelManagementSystem" class="project-btn secondary">GitHub ↗</a></div>
     </article>
 
     <article class="project-card">
@@ -2279,6 +2285,7 @@
       <h3>Employee Management System</h3>
       <p>Java CRUD application using object-oriented design and collection-based employee management.</p>
       <div class="project-tags"><span>Java</span><span>OOP</span><span>CRUD</span></div>
+      <div class="project-actions"><a href="https://github.com/bdalrhmnsmt156-eng/Employee-Management-System" class="project-btn secondary">GitHub ↗</a></div>
     </article>
 
     <article class="project-card">
@@ -2287,6 +2294,7 @@
       <h3>Company Management System</h3>
       <p>Java application demonstrating encapsulation, composition, and structured company data management.</p>
       <div class="project-tags"><span>Java</span><span>OOP</span><span>Composition</span></div>
+      <div class="project-actions"><a href="https://github.com/bdalrhmnsmt156-eng/Company-Management-System-Java" class="project-btn secondary">GitHub ↗</a></div>
     </article>
 
     <article class="project-card">
@@ -2295,6 +2303,7 @@
       <h3>Bank Account Management</h3>
       <p>Java-based banking management project focused on core object-oriented programming concepts.</p>
       <div class="project-tags"><span>Java</span><span>OOP</span></div>
+      <div class="project-actions"><a href="https://github.com/bdalrhmnsmt156-eng/banckaccount" class="project-btn secondary">GitHub ↗</a></div>
     </article>
 
     <article class="project-card">
@@ -2303,6 +2312,7 @@
       <h3>Shell Simulation Application</h3>
       <p>Command-line shell simulation project developed with Java and Maven.</p>
       <div class="project-tags"><span>Java</span><span>CLI</span><span>Maven</span></div>
+      <div class="project-actions"><a href="https://github.com/bdalrhmnsmt156-eng/shell-java" class="project-btn secondary">GitHub ↗</a></div>
     </article>
 
     <article class="project-card">
@@ -2311,6 +2321,7 @@
       <h3>Flight / Hotel Booking System</h3>
       <p>Python booking workflow using OOP, UUID identifiers, type hints, roles, seat management, and reservations.</p>
       <div class="project-tags"><span>Python</span><span>OOP</span><span>UUID</span></div>
+      <div class="project-actions"><a href="https://github.com/bdalrhmnsmt156-eng/python-booking_system" class="project-btn secondary">GitHub ↗</a></div>
     </article>
 
     <article class="project-card">
@@ -2319,6 +2330,7 @@
       <h3>OOP & Polymorphism Demonstration</h3>
       <p>Python project demonstrating inheritance, polymorphism, abstract design, and reusable object-oriented structures.</p>
       <div class="project-tags"><span>Python</span><span>OOP</span><span>Polymorphism</span></div>
+      <div class="project-actions"><a href="https://github.com/bdalrhmnsmt156-eng/Polymorphism" class="project-btn secondary">GitHub ↗</a></div>
     </article>
 
     </div>
@@ -2411,8 +2423,8 @@
                     <h2 class="section-title">Get in Touch</h2>
                     <p class="contact-desc">Have a project, internship opportunity, or technical question? Send a message directly by email.</p>
                     <div class="social-actions" aria-label="Social links">
-                        <a class="social-btn github" href="https://github.com/bdalrhmnsmt156-eng" target="_blank" rel="noopener" aria-label="GitHub">⌘<span>GitHub</span></a>
-                        <a class="social-btn linkedin" href="https://www.linkedin.com/in/abd-elrahman-osmat-b147ab317" target="_blank" rel="noopener" aria-label="LinkedIn">in<span>LinkedIn</span></a>
+                        <a class="social-btn github" href="https://github.com/bdalrhmnsmt156-eng"  aria-label="GitHub">⌘<span>GitHub</span></a>
+                        <a class="social-btn linkedin" href="https://www.linkedin.com/in/abd-elrahman-osmat-b147ab317"  aria-label="LinkedIn">in<span>LinkedIn</span></a>
                         <a class="social-btn email" href="mailto:bdalrhmnsmt156@gmail.com" aria-label="Email">✉<span>Email</span></a>
                     </div>
                 </div>
@@ -2466,11 +2478,11 @@
             <div class="modal-no-code" id="project-modal-no-code" style="display:none;">
                 Full source code is available in the public repository.
                 <br>
-                <a id="project-modal-no-code-link" href="#" target="_blank" rel="noopener">↗ Open GitHub Repository</a>
+                <a id="project-modal-no-code-link" href="#" >↗ Open GitHub Repository</a>
             </div>
             <div class="modal-meta">
                 <span class="initiative" id="project-modal-initiative">🌐 مبادرة رواد مصر الرقمية - وزارة الاتصالات</span>
-                <a class="github-link" id="project-modal-github" href="#" target="_blank" rel="noopener" style="display:none;">↗ GitHub Repository</a>
+                <a class="github-link" id="project-modal-github" href="#"  style="display:none;">↗ GitHub Repository</a>
             </div>
         </div>
     </div>
