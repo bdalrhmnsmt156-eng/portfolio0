@@ -98,99 +98,6 @@
             transition: opacity .5s ease;
         }
 
-        /* ===== BOOT SCREEN ===== */
-        #boot-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: #0A0A0A;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-family: 'IBM Plex Mono', monospace;
-            color: var(--red);
-            transition: opacity .6s ease, visibility .6s ease;
-        }
-        #boot-overlay.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-        #boot-overlay .boot-box {
-            border: 2px solid var(--red);
-            padding: 28px 44px 34px;
-            background: rgba(228, 0, 43, .06);
-            box-shadow: 0 0 50px rgba(228, 0, 43, .12);
-            max-width: 600px;
-            width: 90%;
-            text-align: left;
-            transition: border-color .5s ease, background .5s ease, box-shadow .5s ease;
-        }
-        body.project-mode #boot-overlay .boot-box {
-            border-color: #00E676;
-            background: rgba(0, 230, 118, .08);
-            box-shadow: 0 0 50px rgba(0, 230, 118, .15);
-        }
-        #boot-overlay .boot-box .line {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 15px;
-            letter-spacing: .04em;
-            padding: 5px 0;
-            border-bottom: 1px solid rgba(228, 0, 43, .15);
-            transition: border-color .5s ease;
-        }
-        body.project-mode #boot-overlay .boot-box .line {
-            border-bottom-color: rgba(0, 230, 118, .2);
-        }
-        #boot-overlay .boot-box .line:last-child {
-            border-bottom: none;
-        }
-        #boot-overlay .boot-box .line .prompt {
-            color: var(--muted);
-            flex: none;
-        }
-        #boot-overlay .boot-box .line .cmd {
-            color: var(--ink);
-        }
-        #boot-overlay .boot-box .line .cursor-blink {
-            display: inline-block;
-            width: 10px;
-            height: 18px;
-            background: var(--red);
-            animation: bootBlink .9s step-end infinite;
-            margin-left: 4px;
-            vertical-align: middle;
-            transition: background .5s ease;
-        }
-        #boot-overlay .boot-progress {
-            margin-top: 26px;
-            width: 100%;
-            height: 3px;
-            background: var(--line);
-            overflow: hidden;
-            border-radius: 2px;
-            transition: background .5s ease;
-        }
-        #boot-overlay .boot-progress .fill {
-            height: 100%;
-            width: 0%;
-            background: var(--red);
-            transition: width .08s linear, background .5s ease;
-            border-radius: 2px;
-        }
-        @keyframes bootBlink {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0;
-            }
-        }
-
         /* ===== SCANNER ===== */
         .scanner {
             position: fixed;
@@ -1232,14 +1139,17 @@
             }
         }
 
+        /* Content must remain visible even if a browser blocks or delays JavaScript. */
         .reveal {
-            opacity: 0;
-            transform: translateY(18px);
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
             transition: opacity .6s ease, transform .6s ease;
         }
         .reveal.in-view {
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
         }
 
 
@@ -1823,24 +1733,250 @@
         @media (pointer:coarse){#cursor-glow{display:none}}
         @media (prefers-reduced-motion:reduce){#cursor-glow{display:none!important}}
 </style>
+
+<style>
+/* Portfolio V6 — unified project & certificate presentation */
+.section-heading { max-width: 760px; margin-bottom: 2.25rem; }
+.section-kicker { display:inline-block; font-size:.78rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; opacity:.72; margin-bottom:.55rem; }
+.section-heading h2 { margin:0 0 .7rem; }
+.projects-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.35rem; }
+.project-card { position:relative; display:flex; flex-direction:column; min-height:100%; padding:1.35rem; border:1px solid rgba(127,127,127,.18); border-radius:22px; background:rgba(255,255,255,.045); box-shadow:0 12px 35px rgba(0,0,0,.06); transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; overflow:hidden; }
+.project-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(0,0,0,.12); border-color:rgba(127,127,127,.35); }
+.featured-project { grid-column:span 2; }
+.project-card-top { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1.05rem; }
+.project-number { font-size:.78rem; font-weight:900; letter-spacing:.1em; opacity:.5; }
+.project-status { font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; padding:.38rem .65rem; border-radius:999px; background:rgba(127,127,127,.1); }
+.project-icon { width:48px; height:48px; display:grid; place-items:center; border-radius:15px; background:rgba(127,127,127,.1); font-size:1.35rem; margin-bottom:1rem; }
+.project-card h3 { margin:0 0 .65rem; font-size:1.1rem; line-height:1.25; }
+.project-card p { margin:0 0 1rem; opacity:.76; line-height:1.65; font-size:.92rem; }
+.project-tags { display:flex; flex-wrap:wrap; gap:.42rem; margin-top:auto; padding-top:.2rem; }
+.project-tags span { font-size:.72rem; font-weight:700; padding:.35rem .55rem; border-radius:999px; background:rgba(127,127,127,.09); }
+.project-actions { display:flex; flex-wrap:wrap; gap:.55rem; margin-top:1.05rem; }
+.project-btn { display:inline-flex; align-items:center; justify-content:center; gap:.35rem; min-height:38px; padding:.55rem .78rem; border-radius:11px; text-decoration:none; font-size:.78rem; font-weight:800; transition:transform .2s ease, opacity .2s ease; }
+.project-btn:hover { transform:translateY(-2px); opacity:.9; }
+.project-btn.primary { background:currentColor; color:inherit; border:1px solid currentColor; }
+.project-btn.secondary { border:1px solid rgba(127,127,127,.25); color:inherit; background:transparent; }
+
+.certificates-section { margin-top:1rem; }
+.certificate-grid { display:grid; grid-template-columns:minmax(0, 920px); }
+.certificate-card { display:grid; grid-template-columns:minmax(280px, 42%) 1fr; gap:1.6rem; padding:1.35rem; border:1px solid rgba(127,127,127,.18); border-radius:24px; background:rgba(255,255,255,.045); box-shadow:0 14px 42px rgba(0,0,0,.07); }
+.certificate-preview { position:relative; min-height:260px; display:flex; align-items:center; justify-content:center; overflow:hidden; border-radius:17px; background:rgba(127,127,127,.08); }
+.certificate-preview img { width:100%; height:100%; min-height:260px; object-fit:contain; display:block; }
+.certificate-overlay { position:absolute; left:12px; bottom:12px; padding:.45rem .65rem; border-radius:9px; background:rgba(0,0,0,.7); color:#fff; font-size:.75rem; font-weight:800; }
+.certificate-content { display:flex; flex-direction:column; justify-content:center; }
+.certificate-badge { width:max-content; padding:.4rem .65rem; border-radius:999px; background:rgba(127,127,127,.1); font-size:.72rem; font-weight:800; margin-bottom:.85rem; }
+.certificate-content h3 { margin:0 0 .55rem; font-size:1.45rem; }
+.certificate-content p { opacity:.76; line-height:1.65; margin:0 0 1rem; }
+.certificate-meta { display:grid; gap:.45rem; font-size:.8rem; opacity:.75; padding:1rem 0; border-top:1px solid rgba(127,127,127,.16); border-bottom:1px solid rgba(127,127,127,.16); }
+.certificate-actions { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem; }
+
+@media (max-width: 980px) {
+  .projects-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .featured-project { grid-column:span 2; }
+}
+@media (max-width: 680px) {
+  .projects-grid { grid-template-columns:1fr; }
+  .featured-project { grid-column:span 1; }
+  .certificate-card { grid-template-columns:1fr; }
+  .certificate-preview, .certificate-preview img { min-height:220px; }
+}
+
+
+        /* ===== CERTIFICATES — HORIZONTAL CYBER SCROLLER V7 ===== */
+        .certificates-section { position: relative; overflow: hidden; }
+        .cert-marquee {
+            position: relative;
+            width: 100vw;
+            margin-left: calc(50% - 50vw);
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 16px max(28px, calc((100vw - 960px) / 2)) 28px;
+            scroll-snap-type: x proximity;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(228,0,43,.65) transparent;
+            -webkit-overflow-scrolling: touch;
+            cursor: grab;
+        }
+        .cert-marquee:active { cursor: grabbing; }
+        .cert-marquee::-webkit-scrollbar { height: 5px; }
+        .cert-marquee::-webkit-scrollbar-track { background: transparent; }
+        .cert-marquee::-webkit-scrollbar-thumb { background: rgba(228,0,43,.65); border-radius: 999px; }
+        .cert-track {
+            display: flex;
+            gap: 18px;
+            width: max-content;
+            min-width: max-content;
+        }
+        .cert-cyber-card {
+            --card-w: 285px;
+            flex: 0 0 var(--card-w);
+            min-height: 188px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 19px 19px 16px;
+            border: 1px solid rgba(255,255,255,.11) !important;
+            border-radius: 20px !important;
+            background:
+                linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.018) 58%),
+                radial-gradient(circle at 88% 14%, rgba(228,0,43,.15), transparent 35%) !important;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 18px 50px rgba(0,0,0,.28) !important;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            scroll-snap-align: start;
+            transition: transform .32s ease, border-color .32s ease, box-shadow .32s ease, background .32s ease;
+        }
+        .cert-cyber-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(228,0,43,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(228,0,43,.055) 1px, transparent 1px);
+            background-size: 18px 18px;
+            mask-image: linear-gradient(to bottom right, rgba(0,0,0,.7), transparent 58%);
+            pointer-events: none;
+        }
+        .cert-cyber-card::after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            right: -68px;
+            bottom: -68px;
+            border: 1px solid rgba(228,0,43,.24);
+            border-radius: 50%;
+            box-shadow: 0 0 0 10px rgba(228,0,43,.035), 0 0 0 20px rgba(228,0,43,.025);
+            pointer-events: none;
+        }
+        .cert-cyber-card:hover,
+        .cert-cyber-card:focus-visible {
+            transform: translateY(-8px);
+            border-color: rgba(228,0,43,.48) !important;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 25px 65px rgba(0,0,0,.38), 0 0 32px rgba(228,0,43,.08) !important;
+            outline: none;
+        }
+        .cert-card-grid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: .25;
+            background: linear-gradient(90deg, transparent 49.7%, rgba(255,255,255,.06) 50%, transparent 50.3%);
+        }
+        .cert-card-top,
+        .cert-card-bottom { position: relative; z-index: 2; display: flex; align-items: center; }
+        .cert-card-top { gap: 9px; min-height: 32px; }
+        .cert-issuer-mark {
+            display: inline-flex;
+            width: 31px;
+            height: 31px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(228,0,43,.45);
+            background: rgba(228,0,43,.08);
+            color: var(--red);
+            font: 700 10px 'IBM Plex Mono', monospace;
+            letter-spacing: .04em;
+            border-radius: 8px;
+            box-shadow: inset 0 0 14px rgba(228,0,43,.08);
+        }
+        .cert-issuer {
+            color: rgba(245,245,245,.76);
+            font: 600 10px 'IBM Plex Mono', monospace;
+            letter-spacing: .075em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .cert-signal { margin-left: auto; color: var(--red); font-size: 8px; text-shadow: 0 0 12px var(--red); animation: certPulse 1.8s ease-in-out infinite; }
+        .cert-card-body { position: relative; z-index: 2; padding: 15px 0 13px; }
+        .cert-group-label {
+            display: block;
+            color: var(--red);
+            font: 500 9px 'IBM Plex Mono', monospace;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            opacity: .78;
+        }
+        .cert-cyber-card .cert-title {
+            margin: 0;
+            color: #f5f5f5;
+            font-size: 17px;
+            line-height: 1.3;
+            font-weight: 800;
+            letter-spacing: -.015em;
+            border: 0;
+            max-width: 235px;
+        }
+        .cert-card-bottom {
+            z-index: 2;
+            justify-content: space-between;
+            gap: 10px;
+            border-top: 1px solid rgba(255,255,255,.08);
+            padding-top: 11px;
+            color: rgba(245,245,245,.42);
+            font: 500 9px 'IBM Plex Mono', monospace;
+            letter-spacing: .07em;
+        }
+        .cert-open { color: rgba(228,0,43,.82); transition: color .2s ease; }
+        .cert-cyber-card:hover .cert-open,
+        .cert-cyber-card:focus-visible .cert-open { color: var(--red); }
+        .cert-scroll-status {
+            max-width: 960px;
+            margin: 2px auto 0;
+            padding: 0 28px;
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            color: rgba(245,245,245,.36);
+            font: 500 9px 'IBM Plex Mono', monospace;
+            letter-spacing: .09em;
+        }
+        @keyframes certPulse { 0%,100% { opacity: .35; transform: scale(.85); } 50% { opacity: 1; transform: scale(1); } }
+        @media (max-width: 700px) {
+            .cert-marquee { padding-left: 18px; padding-right: 18px; }
+            .cert-cyber-card { --card-w: 255px; min-height: 180px; }
+            .cert-scroll-status { padding: 0 18px; font-size: 8px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .cert-signal { animation: none !important; }
+            .cert-cyber-card { transition: none !important; }
+        }
+</style>
+
+
+<style>
+/* Portfolio V8 — ordered sections + large horizontal project carousel */
+.project-marquee{position:relative;width:100%;overflow-x:auto;overflow-y:visible;scroll-behavior:smooth;scrollbar-width:none;padding:8px 2px 24px;cursor:grab;-webkit-overflow-scrolling:touch}
+.project-marquee::-webkit-scrollbar{display:none}
+.project-marquee.dragging{cursor:grabbing;scroll-behavior:auto}
+.project-track{display:flex;gap:22px;width:max-content;align-items:stretch;padding:2px 4px 8px}
+.project-track .project-card{flex:0 0 clamp(330px,32vw,440px);width:clamp(330px,32vw,440px);min-height:400px;padding:28px;border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.018));border:1px solid rgba(255,255,255,.10);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 24px 75px rgba(0,0,0,.28);backdrop-filter:blur(20px);transition:transform .32s ease,border-color .32s ease,box-shadow .32s ease}
+.project-track .project-card.featured-project{flex-basis:clamp(360px,35vw,480px);width:clamp(360px,35vw,480px)}
+.project-track .project-card:hover{transform:translateY(-9px);border-color:rgba(228,0,43,.34);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 32px 90px rgba(0,0,0,.36),0 0 32px rgba(228,0,43,.07)}
+.project-track .project-icon{width:62px;height:62px;border-radius:19px;font-size:1.55rem;background:rgba(228,0,43,.10);border:1px solid rgba(228,0,43,.20)}
+.project-track .project-card h3{font-size:1.28rem;line-height:1.25;margin-top:0}
+.project-track .project-card p{font-size:.94rem;line-height:1.75;color:#aeb0ba}
+.project-track .project-tags{margin-top:auto;padding-top:20px;display:flex;flex-wrap:wrap;gap:8px}
+.project-track .project-tags span{padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.035);font-size:.72rem;color:#c9c9d0}
+.project-track .project-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.project-track .project-btn{display:inline-flex;align-items:center;justify-content:center;padding:9px 13px;border-radius:11px;text-decoration:none;font-size:.75rem;font-weight:800;border:1px solid rgba(255,255,255,.10);transition:.25s ease}
+.project-track .project-btn.primary{background:linear-gradient(135deg,#e4002b,#a90022);color:#fff;border-color:rgba(228,0,43,.4)}
+.project-track .project-btn.secondary{background:rgba(255,255,255,.04);color:#ddd}
+.project-track .project-btn:hover{transform:translateY(-2px);border-color:rgba(228,0,43,.45)}
+.project-scroll-status{display:flex;justify-content:space-between;gap:12px;margin-top:2px;color:#777985;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:760px){.project-track .project-card,.project-track .project-card.featured-project{flex-basis:82vw;width:82vw;min-height:360px;padding:23px}.project-scroll-status{font-size:9px}}
+.cert-fallback-card{flex:0 0 clamp(300px,30vw,420px);min-height:250px;}
+</style>
 </head>
 <body>
     <div id="cursor-glow" aria-hidden="true"></div>
 
     <!-- ===== BACKGROUND PARTICLES (RED DOTS) ===== -->
     <canvas id="bg-particles"></canvas>
-
-    <!-- ===== BOOT SCREEN ===== -->
-    <div id="boot-overlay" role="status" aria-label="System booting">
-        <div class="boot-box">
-            <div class="line"><span class="prompt">⏻</span><span class="cmd">Booting secure-system v3.2 ...</span></div>
-            <div class="line"><span class="prompt">▶</span><span class="cmd">Loading kernel modules ...</span></div>
-            <div class="line"><span class="prompt">▶</span><span class="cmd">Initializing network stack ...</span></div>
-            <div class="line"><span class="prompt">▶</span><span class="cmd">Starting security daemons ...</span></div>
-            <div class="line"><span class="prompt">▶</span><span class="cmd">Verifying certificates ... <span class="cursor-blink"></span></span></div>
-            <div class="boot-progress"><div class="fill" id="boot-progress-fill"></div></div>
-        </div>
-    </div>
 
     <!-- ===== SCANNER ===== -->
     <div class="scanner"></div>
@@ -1949,6 +2085,47 @@
     <!-- ===== MAIN ===== -->
     <div class="wrap">
 
+        <!-- TRAINING EXPERIENCE -->
+        <section id="training">
+            <h2 class="section-title">Training Experience</h2>
+            <p class="section-sub">Current Professional Development — <span style="color:var(--muted);font-weight:400;">Software Testing &amp; Quality Assurance</span></p>
+            <div class="training-card reveal">
+                <div class="training-head">
+                    <div>
+                        <span class="training-status">IN PROGRESS</span>
+                        <h3>Digital Egypt Pioneers Initiative (DEPI)</h3>
+                        <p class="training-role">Software Tester Engineer Trainee · July 2026 – December 2026</p>
+                    </div>
+                    <div class="training-icon">🧪</div>
+                </div>
+                <p class="training-description">
+                    Current intensive training focused on Software Testing and Quality Assurance, building practical skills for a Junior QA / Manual Software Tester role.
+                </p>
+                <div class="training-chips">
+                    <span class="chip">Software Testing</span>
+                    <span class="chip">STLC</span>
+                    <span class="chip">ISTQB Fundamentals</span>
+                    <span class="chip">Test Case Design</span>
+                    <span class="chip">Test Analysis &amp; Design</span>
+                    <span class="chip">Defect Reporting</span>
+                    <span class="chip">Jira</span>
+                    <span class="chip">Postman</span>
+                    <span class="chip">Selenium</span>
+                    <span class="chip">SQL</span>
+                    <span class="chip">Java</span>
+                    <span class="chip">Agile</span>
+                </div>
+                <ul class="training-list">
+                    <li>Testing fundamentals and Software Testing Throughout the Software Development Life Cycle (STLC).</li>
+                    <li>Requirement analysis, test analysis, test case preparation, execution, and defect tracking.</li>
+                    <li>Practical exposure to Jira, Postman, Selenium, SQL/database concepts, and Java fundamentals.</li>
+                    <li>Hands-on exercises and a capstone project as part of the training program.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CERTIFICATES -->
+
         <!-- SKILLS -->
         <section id="skills">
             <h2 class="section-title">Skills</h2>
@@ -2010,86 +2187,169 @@
             </div>
         </section>
 
-        <!-- ===== PROJECTS SECTION ===== -->
-        <section id="projects">
-            <h2 class="section-title">Projects</h2>
-            <p class="section-sub">Java, Python &amp; Web Projects — <span style="color:var(--muted);font-weight:400;">click a web project to open its live site in a new tab</span></p>
 
-            <div class="project-grid" id="project-grid">
-                <!-- populated by JS -->
-            </div>
-        </section>
+<section id="projects" class="section">
+  <div class="section-heading">
+    <span class="section-kicker">Selected Work</span>
+    <h2>Projects & <span>Web Experiences</span></h2>
+    <p>Real projects across QA, Java, Python, and frontend development. Open any live project in a new tab.</p>
+  </div>
 
-        <!-- TRAINING EXPERIENCE -->
-        <section id="training">
-            <h2 class="section-title">Training Experience</h2>
-            <p class="section-sub">Current Professional Development — <span style="color:var(--muted);font-weight:400;">Software Testing &amp; Quality Assurance</span></p>
-            <div class="training-card reveal">
-                <div class="training-head">
-                    <div>
-                        <span class="training-status">IN PROGRESS</span>
-                        <h3>Digital Egypt Pioneers Initiative (DEPI)</h3>
-                        <p class="training-role">Software Tester Engineer Trainee · July 2026 – December 2026</p>
-                    </div>
-                    <div class="training-icon">🧪</div>
+  <div class="project-marquee" id="project-marquee">
+    <div class="project-track" id="project-track">
+
+    <article class="project-card featured-project">
+      <div class="project-card-top">
+        <span class="project-number">01</span>
+        <span class="project-status">Live Demo</span>
+      </div>
+      <div class="project-icon">🌍</div>
+      <h3>Student Performance & Analytics System</h3>
+      <p>End-to-end academic performance system combining Java CLI, JDBC, SQLite/SQL, Python, pandas, and Matplotlib analytics.</p>
+      <div class="project-tags">
+        <span>Java</span><span>JDBC</span><span>SQLite</span><span>SQL</span><span>Python</span><span>pandas</span>
+      </div>
+      <div class="project-actions">
+        <a href="https://github.com/bdalrhmnsmt156-eng/StudentPerformanceSystem" target="_blank" rel="noopener noreferrer" class="project-btn primary">GitHub ↗</a>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-card-top">
+        <span class="project-number">02</span>
+        <span class="project-status">Live Demo</span>
+      </div>
+      <div class="project-icon">✈️</div>
+      <h3>My Top 3 Cities in the World</h3>
+      <p>Responsive travel experience featuring Tokyo, Paris, and New York with imagery, comparison data, multimedia, and contact UI.</p>
+      <div class="project-tags">
+        <span>HTML5</span><span>CSS3</span><span>Responsive UI</span><span>Semantic HTML</span>
+      </div>
+      <div class="project-actions">
+        <a href="https://bdalrhmnsmt156-eng.github.io/My-Top-3-Cities-in-the-Worl/" target="_blank" rel="noopener noreferrer" class="project-btn primary">Open Website ↗</a>
+        <a href="https://github.com/bdalrhmnsmt156-eng/My-Top-3-Cities-in-the-Worl" target="_blank" rel="noopener noreferrer" class="project-btn secondary">GitHub</a>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-card-top">
+        <span class="project-number">03</span>
+        <span class="project-status">Live Demo</span>
+      </div>
+      <div class="project-icon">🗺️</div>
+      <h3>World Discovery</h3>
+      <p>Interactive geography website using an image map, JavaScript continent information, and browser geolocation to identify the user's continent.</p>
+      <div class="project-tags">
+        <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Geolocation API</span>
+      </div>
+      <div class="project-actions">
+        <a href="https://bdalrhmnsmt156-eng.github.io/World-Discovery/" target="_blank" rel="noopener noreferrer" class="project-btn primary">Open Website ↗</a>
+        <a href="https://github.com/bdalrhmnsmt156-eng/World-Discovery" target="_blank" rel="noopener noreferrer" class="project-btn secondary">GitHub</a>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-card-top">
+        <span class="project-number">04</span>
+        <span class="project-status">Live Demo</span>
+      </div>
+      <div class="project-icon">🏛️</div>
+      <h3>Harbor Light Community Center</h3>
+      <p>Structured community-center website with semantic navigation, services, events, contact information, imagery, and Schema.org event metadata.</p>
+      <div class="project-tags">
+        <span>HTML5</span><span>CSS3</span><span>Accessibility</span><span>Semantic HTML</span><span>Schema.org</span>
+      </div>
+      <div class="project-actions">
+        <a href="https://bdalrhmnsmt156-eng.github.io/Harbor-Light-Community-Cente/" target="_blank" rel="noopener noreferrer" class="project-btn primary">Open Website ↗</a>
+        <a href="https://github.com/bdalrhmnsmt156-eng/Harbor-Light-Community-Cente" target="_blank" rel="noopener noreferrer" class="project-btn secondary">GitHub</a>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-card-top"><span class="project-number">05</span></div>
+      <div class="project-icon">🏨</div>
+      <h3>Hotel Management System</h3>
+      <p>Object-oriented Java application for room availability, date-based searches, and reservations.</p>
+      <div class="project-tags"><span>Java</span><span>OOP</span><span>Collections</span></div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-card-top"><span class="project-number">06</span></div>
+      <div class="project-icon">👥</div>
+      <h3>Employee Management System</h3>
+      <p>Java CRUD application using object-oriented design and collection-based employee management.</p>
+      <div class="project-tags"><span>Java</span><span>OOP</span><span>CRUD</span></div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-card-top"><span class="project-number">07</span></div>
+      <div class="project-icon">🏢</div>
+      <h3>Company Management System</h3>
+      <p>Java application demonstrating encapsulation, composition, and structured company data management.</p>
+      <div class="project-tags"><span>Java</span><span>OOP</span><span>Composition</span></div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-card-top"><span class="project-number">08</span></div>
+      <div class="project-icon">🏦</div>
+      <h3>Bank Account Management</h3>
+      <p>Java-based banking management project focused on core object-oriented programming concepts.</p>
+      <div class="project-tags"><span>Java</span><span>OOP</span></div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-card-top"><span class="project-number">09</span></div>
+      <div class="project-icon">⌨️</div>
+      <h3>Shell Simulation Application</h3>
+      <p>Command-line shell simulation project developed with Java and Maven.</p>
+      <div class="project-tags"><span>Java</span><span>CLI</span><span>Maven</span></div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-card-top"><span class="project-number">10</span></div>
+      <div class="project-icon">🎫</div>
+      <h3>Flight / Hotel Booking System</h3>
+      <p>Python booking workflow using OOP, UUID identifiers, type hints, roles, seat management, and reservations.</p>
+      <div class="project-tags"><span>Python</span><span>OOP</span><span>UUID</span></div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-card-top"><span class="project-number">11</span></div>
+      <div class="project-icon">🧩</div>
+      <h3>OOP & Polymorphism Demonstration</h3>
+      <p>Python project demonstrating inheritance, polymorphism, abstract design, and reusable object-oriented structures.</p>
+      <div class="project-tags"><span>Python</span><span>OOP</span><span>Polymorphism</span></div>
+    </article>
+
+    </div>
+  </div>
+  <div class="project-scroll-status" aria-hidden="true"><span>← DRAG / SCROLL →</span><span>EXPLORE SELECTED WORK</span></div>
+</section>
+
+
+
+<section id="certificates" class="section certificates-section">
+  <div class="section-heading">
+    <span class="section-kicker">Credentials / VERIFIED</span>
+    <h2>Certificates & <span>Credentials</span></h2>
+    <p>Scroll horizontally to explore my certifications. Click any card to open the certificate.</p>
+  </div>
+
+  <div class="cert-marquee" id="cert-marquee">
+    <div class="cert-track" id="cert-container" aria-label="Certificates horizontal carousel">
+                    <article class="cert-cyber-card cert-fallback-card" tabindex="0">
+                        <div class="cert-card-top"><span class="cert-issuer-mark">C</span><span>Cisco Networking Academy</span></div>
+                        <div class="cert-card-bottom"><h3>HTML Essentials</h3><p>06 Sep 2026 · Networking Academy</p></div>
+                    </article>
                 </div>
-                <p class="training-description">
-                    Current intensive training focused on Software Testing and Quality Assurance, building practical skills for a Junior QA / Manual Software Tester role.
-                </p>
-                <div class="training-chips">
-                    <span class="chip">Software Testing</span>
-                    <span class="chip">STLC</span>
-                    <span class="chip">ISTQB Fundamentals</span>
-                    <span class="chip">Test Case Design</span>
-                    <span class="chip">Test Analysis &amp; Design</span>
-                    <span class="chip">Defect Reporting</span>
-                    <span class="chip">Jira</span>
-                    <span class="chip">Postman</span>
-                    <span class="chip">Selenium</span>
-                    <span class="chip">SQL</span>
-                    <span class="chip">Java</span>
-                    <span class="chip">Agile</span>
-                </div>
-                <ul class="training-list">
-                    <li>Testing fundamentals and Software Testing Throughout the Software Development Life Cycle (STLC).</li>
-                    <li>Requirement analysis, test analysis, test case preparation, execution, and defect tracking.</li>
-                    <li>Practical exposure to Jira, Postman, Selenium, SQL/database concepts, and Java fundamentals.</li>
-                    <li>Hands-on exercises and a capstone project as part of the training program.</li>
-                </ul>
-            </div>
-        </section>
+  </div>
+  <div class="cert-scroll-status" aria-hidden="true">
+    <span>← DRAG / SCROLL →</span><span>CLICK CARD TO VIEW</span>
+  </div>
+</section>
 
-        <!-- CERTIFICATES -->
-        <section id="certificates">
-            <h2 class="section-title">Certificates &amp; Credentials</h2>
-            <p class="section-sub">Issued Credentials — <span style="color:var(--muted);font-weight:400;">latest certificate highlighted below</span></p>
 
-            <article class="featured-certificate reveal">
-                <div class="featured-certificate-media">
-                    <img src="HTML_Essentials_certificate.png" alt="HTML Essentials certificate issued by Cisco Networking Academy on 06 Sep 2026">
-                    <span class="certificate-ribbon">LATEST CREDENTIAL</span>
-                </div>
-                <div class="featured-certificate-body">
-                    <div class="certificate-kicker">◈ WEB DEVELOPMENT</div>
-                    <h3>HTML Essentials</h3>
-                    <p>Certificate awarded through the Cisco Networking Academy program via Networking Academy on <strong>06 Sep 2026</strong>.</p>
-                    <div class="certificate-meta-row">
-                        <span>Cisco Networking Academy</span>
-                        <span>Cert ID: e0416648-d8e3-4301-8697-ebf5513c942e</span>
-                    </div>
-                    <div class="certificate-actions">
-                        <a href="HTML_Essentials_certificate.pdf" target="_blank" rel="noopener">View Certificate ↗</a>
-                        <a href="HTML_Essentials_certificate.pdf" download>Download PDF ↓</a>
-                    </div>
-                </div>
-            </article>
-
-            <div id="cert-container">
-                <!-- populated by JS -->
-            </div>
-        </section>
-
-        <!-- CV / RESUME -->
+<!-- CV / RESUME -->
         <section id="cv">
             <h2 class="section-title">Resume / CV</h2>
             <p class="section-sub">Professional Summary</p>
@@ -2143,6 +2403,7 @@
         </section>
 
         <!-- GET IN TOUCH -->
+
         <section id="contact" class="contact-section">
             <div class="contact-card reveal">
                 <div class="contact-copy">
@@ -2169,7 +2430,9 @@
         </section>
 
         <!-- FOOTER -->
-        <footer>
+        
+
+<footer>
             <p>◆ 18 credentials · 11 projects · updated Sep 2026 · built with <span style="color:var(--red);">♥</span></p>
         </footer>
     </div>
@@ -2270,32 +2533,9 @@
                 drawParticles();
             }
 
-            // ===== BOOT SCREEN =====
-            var bootOverlay = document.getElementById('boot-overlay');
-            var bootFill = document.getElementById('boot-progress-fill');
-            if (!reduce && bootOverlay) {
-                var progress = 0;
-                var bootInterval = setInterval(function() {
-                    progress += Math.random() * 4 + 1;
-                    if (progress > 100) progress = 100;
-                    bootFill.style.width = progress + '%';
-                    if (progress >= 100) {
-                        clearInterval(bootInterval);
-                        setTimeout(function() {
-                            bootOverlay.classList.add('hidden');
-                            setTimeout(function() {
-                                bootOverlay.style.display = 'none';
-                            }, 700);
-                        }, 400);
-                    }
-                }, 70);
-            } else {
-                if (bootOverlay) {
-                    bootOverlay.style.display = 'none';
-                }
-            }
+            // Boot screen removed so the portfolio is immediately visible.
 
-            // ===== MATRIX RAIN =====
+// ===== MATRIX RAIN =====
             var canvas = document.getElementById('matrix');
             var matrixInterval = null;
             if (canvas && !reduce) {
@@ -2514,25 +2754,65 @@
                 }]
             }];
 
-            // ===== RENDER CERTIFICATES =====
+            // ===== RENDER CERTIFICATES — HORIZONTAL CYBER CARDS =====
             var container = document.getElementById('cert-container');
             var html = '';
+            function issuerMark(issuer) {
+                var text = (issuer || '').toLowerCase();
+                if (text.indexOf('cisco') !== -1) return 'CS';
+                if (text.indexOf('edraak') !== -1) return 'ED';
+                if (text.indexOf('huawei') !== -1) return 'HW';
+                if (text.indexOf('sololearn') !== -1) return 'SL';
+                if (text.indexOf('mahara') !== -1 || text.indexOf('iti') !== -1) return 'IT';
+                if (text.indexOf('hp') !== -1) return 'HP';
+                return (issuer || 'CERT').replace(/[^A-Za-z]/g, '').slice(0, 2).toUpperCase() || 'CR';
+            }
             certData.forEach(function(group) {
-                html += '<div class="cert-group">';
-                html += '<p class="cert-group-title">' + group.group + '</p>';
-                html += '<div class="cert-list">';
-                group.items.forEach(function(item) {
+                group.items.forEach(function(item, index) {
                     var id = 'cert-' + item.title.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
-                    html += '<div class="cert-item reveal" data-cert="' + id + '">';
-                    html += '<p class="cert-title">' + item.title +
-                        ' <span class="click-hint">⤷ view</span></p>';
-                    html += '<p class="cert-meta">' + item.issuer +
-                        '<span class="date">' + item.date + '</span></p>';
+                    html += '<article class="cert-item cert-cyber-card reveal" data-cert="' + id + '" tabindex="0" role="button" aria-label="View certificate: ' + item.title.replace(/"/g, '&quot;') + '">';
+                    html += '<div class="cert-card-grid"></div>';
+                    html += '<div class="cert-card-top">';
+                    html += '<span class="cert-issuer-mark" aria-hidden="true">' + issuerMark(item.issuer) + '</span>';
+                    html += '<span class="cert-issuer">' + item.issuer + '</span>';
+                    html += '<span class="cert-signal" aria-hidden="true">●</span>';
                     html += '</div>';
+                    html += '<div class="cert-card-body">';
+                    html += '<span class="cert-group-label">' + group.group + '</span>';
+                    html += '<h3 class="cert-title">' + item.title + '</h3>';
+                    html += '</div>';
+                    html += '<div class="cert-card-bottom"><span>' + item.date + '</span><span class="cert-open">VIEW / CERTIFICATE ↗</span></div>';
+                    html += '</article>';
                 });
-                html += '</div></div>';
             });
             container.innerHTML = html;
+
+            // Seamless slow auto-scroll; pauses while the user interacts.
+            var certAutoScroll = null;
+            var certPaused = false;
+            if (certMarquee) {
+                var originalCards = Array.prototype.slice.call(container.children);
+                originalCards.forEach(function(card) {
+                    var clone = card.cloneNode(true);
+                    clone.setAttribute('aria-hidden', 'true');
+                    clone.removeAttribute('tabindex');
+                    container.appendChild(clone);
+                });
+                certMarquee.addEventListener('mouseenter', function(){ certPaused = true; });
+                certMarquee.addEventListener('mouseleave', function(){ certPaused = false; });
+                certMarquee.addEventListener('focusin', function(){ certPaused = true; });
+                certMarquee.addEventListener('focusout', function(){ certPaused = false; });
+                certMarquee.addEventListener('touchstart', function(){ certPaused = true; }, {passive:true});
+                certMarquee.addEventListener('touchend', function(){ certPaused = false; }, {passive:true});
+                if (!reduce) {
+                    certAutoScroll = window.setInterval(function(){
+                        if (certPaused) return;
+                        certMarquee.scrollLeft += 0.55;
+                        var half = certMarquee.scrollWidth / 2;
+                        if (certMarquee.scrollLeft >= half) certMarquee.scrollLeft = 0;
+                    }, 16);
+                }
+            }
 
             // ===== PROJECTS DATA (synced from the public GitHub repositories reviewed on 04 Sep 2026) =====
             var projects = [
@@ -2785,21 +3065,35 @@
 
             document.querySelectorAll('.cert-item').forEach(function(el) {
                 el.addEventListener('click', function() {
-                    var title = this.querySelector('.cert-title').textContent.replace(' ⤷ view', '')
-                    .trim();
+                    var titleEl = this.querySelector('.cert-title');
+                    if (!titleEl) return;
+                    var title = titleEl.textContent.trim();
                     var found = null;
                     certData.forEach(function(g) {
                         g.items.forEach(function(it) {
-                            if (it.title === title) {
-                                found = it;
-                            }
+                            if (it.title === title) found = it;
                         });
                     });
-                    if (found) {
-                        openCert(found);
+                    if (found) openCert(found);
+                });
+                el.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
                     }
                 });
             });
+
+            // ===== CERTIFICATE HORIZONTAL SCROLL =====
+            var certMarquee = document.getElementById('cert-marquee');
+            if (certMarquee) {
+                certMarquee.addEventListener('wheel', function(e) {
+                    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                        e.preventDefault();
+                        certMarquee.scrollLeft += e.deltaY;
+                    }
+                }, { passive: false });
+            }
 
             certModalClose.addEventListener('click', closeCertModal);
             certModal.addEventListener('click', function(e) {
@@ -2892,5 +3186,18 @@
         })();
     </script>
 
+
+<script>
+(function(){
+  const el=document.getElementById('project-marquee');
+  if(!el) return;
+  let down=false,startX=0,scrollLeft=0;
+  el.addEventListener('pointerdown',e=>{down=true;startX=e.clientX;scrollLeft=el.scrollLeft;el.classList.add('dragging');el.setPointerCapture?.(e.pointerId);});
+  el.addEventListener('pointermove',e=>{if(!down)return;el.scrollLeft=scrollLeft-(e.clientX-startX)*1.15;});
+  const stop=()=>{down=false;el.classList.remove('dragging');};
+  el.addEventListener('pointerup',stop);el.addEventListener('pointercancel',stop);el.addEventListener('lostpointercapture',stop);
+  el.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();el.scrollLeft+=e.deltaY;}},{passive:false});
+})();
+</script>
 </body>
 </html>
